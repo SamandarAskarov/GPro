@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Pro - Yuqori natija beradigan landing sahifa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="logo/rmbg.png">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+
+    body {
+      background-color: #f9fafb;
+      color: #111;
+      line-height:1.6;
+    }
+
+    a { text-decoration:none; color:inherit; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    h1, h2, h3 { font-weight:700; }
+    h1 { font-size:2.5rem; margin-bottom:0.5rem; }
+    h2 { font-size:2rem; margin-bottom:0.5rem; }
+    p { margin-bottom:1rem; color:#555; }
+
+    .btn {
+      display:inline-block;
+      padding:12px 25px;
+      border-radius:8px;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(90deg, #8e2de2, #4a00e0);
+      color:#fff;
+    }
+
+    .btn-outline {
+      border:2px solid #8e2de2;
+      color:#8e2de2;
+    }
+
+    .btn-outline:hover {
+      background:#8e2de2;
+      color:#fff;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo {
+      font-weight:700;
+      font-size:1.2rem;
+    }
+
+    .nav-links {
+      display:flex;
+      gap:20px;
+      align-items:center;
+    }
+
+    .nav-links a {
+      color:#333;
+      font-weight:500;
+    }
+
+    .con { color:#fff!important; }
+
+    /* HAMBURGER */
+    .menu-toggle {
+      display:none;
+      font-size:1.8rem;
+      cursor:pointer;
+    }
+
+    /* HERO */
+    .hero {
+      margin-top:80px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      min-height:90vh;
+      padding:0 20px;
+    }
+
+    .hero p {
+      font-size:1.2rem;
+      margin-bottom:2rem;
+      color:#666;
+    }
+
+    .hero .btn-group {
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    section { padding:80px 0; }
+
+    .section-title {
+      text-align:center;
+      margin-bottom:3rem;
+    }
+
+    .cards {
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .card {
+      background:#fff;
+      padding:20px;
+      border-radius:12px;
+      flex:1 1 250px;
+      text-align:center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition:0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .pricing {
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .price-card {
+      background:#fff;
+      padding:30px;
+      border-radius:12px;
+      flex:1 1 250px;
+      text-align:center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .price {
+      font-size:2rem;
+      font-weight:700;
+      margin:15px 0;
+    }
+
+    .contact { text-align:center; }
+
+    .contact .btn-group {
+      display:flex;
+      gap:15px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .sticky-cta {
+      display:none;
+      position:fixed;
+      bottom:20px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:1000;
+    }
+
+    @media(max-width:768px){
+      .sticky-cta { display:block; }
+
+      .con {
+        /* margin-left: 10px!important; */
+        /* margin-right: 10px!important; */
+        width: 100px!important;
+        text-align: center!important;
+      }
+
+      .menu-toggle {
+        display:block;
+      }
+
+      .nav-links {
+        position:absolute;
+        top:70px;
+        right:20px;
+        background:#fff;
+        flex-direction:column;
+        width:220px;
+        padding:20px;
+        border-radius:12px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+        opacity:0;
+        pointer-events:none;
+        transform:translateY(-10px);
+        transition:0.3s;
+      }
+
+      .nav-links.active {
+        opacity:1;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+
+      .nav-links a {
+        padding:10px 0;
+      }
+    }
+
+    /* ANIMATION */
+    .fade-in {
+      opacity:0;
+      transform:translateY(30px);
+    }
+
+    .show {
+      opacity:1;
+      transform:translateY(0);
+      transition:1s;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="logo"><a href="#hero">GetPro</a></div>
+
+      <div class="menu-toggle" id="menu-toggle">☰</div>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#problem">Muammo</a>
+        <a href="#solution">Yechim</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#pricing">Narxlar</a>
+        <a href="#contact" class="btn btn-gradient con">Aloqa</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero fade-in">
+    <h1>Biznesingizga mijoz olib keladigan saytlar yaratamiz</h1>
+    <p>3 kunda mijoz keltiradigan samarali landing sahifa oling</p>
+
+    <div class="btn-group">
+      <a href="https://t.me/biznesxaritada_manager" class="btn btn-gradient">Telegram</a>
+      <a href="https://wa.me/998914533974" class="btn btn-gradient">WhatsApp</a>
+      <a href="tel:+998914533974" class="btn btn-outline">Qo‘ng‘iroq</a>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problem" class="fade-in">
+    <h2 class="section-title">Muammo</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Mijoz yo'qotish</h3>
+        <p>Saytsiz biznes har kuni potensial mijozlarni boy beradi.</p>
+      </div>
+      <div class="card">
+        <h3>Ishonch yo'qligi</h3>
+        <p>Onlayn mavjud bo‘lmagan biznesga mijozlar ishonmaydi.</p>
+      </div>
+      <div class="card">
+        <h3>Daromad pastligi</h3>
+        <p>Internetda mavjud bo‘lmasangiz, savdolaringiz cheklangan bo‘ladi.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION -->
+  <section id="solution" class="fade-in">
+    <h2 class="section-title">Bizning yechimimiz</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Ishonch</h3>
+        <p>Professional dizayn mijozda darhol ishonch uyg‘otadi.</p>
+      </div>
+      <div class="card">
+        <h3>Sotuvga aylantirish</h3>
+        <p>Biz sotuv olib keladigan sahifalar yaratamiz.</p>
+      </div>
+      <div class="card">
+        <h3>Tezlik</h3>
+        <p>Tez ishlaydigan va mobilga mos saytlar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="fade-in">
+    <h2 class="section-title">Bizning ishlarimiz</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Biznes Xaritada</h3>
+        <p>Lokatsiya xizmati uchun landing sahifa</p>
+        <a href="https://samandaraskarov.github.io/biznesxaritada/" class="btn btn-outline">Ko'rish</a>
+      </div>
+      <div class="card">
+        <h3>Mashina ijarasi</h3>
+        <p>Mijoz yig‘uvchi sahifa</p>
+        <a href="https://samandaraskarov.github.io/rentcartest/" class="btn btn-outline">Ko'rish</a>
+      </div>
+      <div class="card">
+        <h3>Restoran</h3>
+        <p>Onlayn menyu sahifasi</p>
+        <a href="https://samandaraskarov.github.io/ACafe/" class="btn btn-outline">Ko'rish</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="fade-in">
+    <h2 class="section-title">Narxlar</h2>
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Boshlang'ich</h3>
+        <p>1 sahifali landing, 3 kunda tayyor</p>
+        <div class="price">$100</div>
+        <a href="https://t.me/biznesxaritada_manager" class="btn btn-gradient">Buyurtma berish</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Standard</h3>
+        <p>Premium dizayn + SEO optimizatsiya</p>
+        <div class="price">$300</div>
+        <a href="https://t.me/biznesxaritada_manager" class="btn btn-gradient">Buyurtma berish</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Pro</h3>
+        <p>To‘liq sotuv tizimi + integratsiyalar</p>
+        <div class="price">$500</div>
+        <a href="https://t.me/biznesxaritada_manager" class="btn btn-gradient">Buyurtma berish</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact fade-in">
+    <h2 class="section-title">Aloqa</h2>
+    <div class="btn-group">
+      <a href="https://t.me/biznesxaritada_manager" class="btn btn-gradient">Telegram</a>
+      <a href="https://wa.me/998914533974" class="btn btn-gradient">WhatsApp</a>
+      <a href="tel:+998914533974" class="btn btn-outline">Qo‘ng‘iroq</a>
+    </div>
+  </section>
+
+  <!-- STICKY CTA -->
+  <div class="sticky-cta">
+    <a href="https://t.me/biznesxaritada_manager" class="btn btn-gradient">Landing sahifa</a>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav-links');
+
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    document.querySelectorAll('#nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('active');
+      });
+    });
+
+    const faders = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    faders.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
